@@ -9,7 +9,7 @@ namespace Emails.Services
     {
         private readonly UsersDTO[] _users =
         {
-            // Insert Seed Data
+            // Insert Seed Data for the fake
             new UsersDTO{ Id = 1, UName = "Tester123", Email = "t123@gmail.com ", Password = "password123"},
             new UsersDTO{ Id = 2, UName = "MCaldwell00", Email = "mdcaldwell16@gmail.com", Password = "testpass"},
             new UsersDTO{ Id = 3, UName = "Joe_Bloggs", Email = "JBL@gmail.com", Password = "abcdef"},
