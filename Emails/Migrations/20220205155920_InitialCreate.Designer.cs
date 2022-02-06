@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Emails.Migrations
 {
     [DbContext(typeof(EmailContext))]
-    [Migration("20211208102015_InitialCreate")]
+    [Migration("20220205155920_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

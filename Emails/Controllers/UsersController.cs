@@ -45,7 +45,7 @@ namespace Emails.Controllers
             return CreatedAtAction(nameof(Index), users.ToList());
         }
 
-        // GET: Users/5
+        // GET: Users/4
         [HttpGet("{id}")]
         public async Task<IActionResult> Details(int? id)
         {
