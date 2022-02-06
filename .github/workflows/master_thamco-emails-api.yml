@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'ThAmCo-Emails-API'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_51A2966A929848A087888521778F8492 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B350748759384E6D868CDB32F022A0C9 }}
           package: .
