@@ -9,6 +9,11 @@ on:
       - master
   workflow_dispatch:
 
+env:
+  AZURE_WEBAPP_NAME: ThAmCo-Emails-API     # set this to your Azure app's name
+  AZURE_WEBAPP_PACKAGE_PATH: './myapp'  # set this to where you will write the pub files
+  DOTNET_VERSION: '3.1.x'               # set this to the dot net version to use
+
 jobs:
   build:
     runs-on: windows-latest
@@ -19,7 +24,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.301'
+          dotnet-version: ${{ env.DOTNET_VERSION }} 
           include-prerelease: true
 
       - name: Build with dotnet
@@ -51,7 +56,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'ThAmCo-Emails-API'
-          slot-name: 'Production'
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B350748759384E6D868CDB32F022A0C9 }}
-          package: .
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
