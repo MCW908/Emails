@@ -66,7 +66,7 @@ namespace Emails.Controllers
             catch
             {
                 _logger.LogWarning("Exception occurred using Users service.");
-                return StatusCode(StatusCodes.Status503ServiceUnavailable);
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
