@@ -49,9 +49,14 @@ namespace Emails
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EmailContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmailConnection")));
+            services.AddDbContext<EmailContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmailConnection"),
+                sqlServerOptionsAction: sqlOptions => sqlOptions.EnableRetryOnFailure(
+                    maxRetryCount: 5,
+                    maxRetryDelay: TimeSpan.FromSeconds(6),
+                    errorNumbersToAdd: null)
+                ));
 
-            if(!Env.IsDevelopment())
+            if(Env.IsDevelopment())
             {
                 services.AddTransient<IUsersService, FakeUsersService>();
             }
