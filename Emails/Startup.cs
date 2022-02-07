@@ -62,7 +62,7 @@ namespace Emails
             }
             else
             {
-                services.AddHttpClient<IUsersService, UsersService>()
+                services.AddHttpClient<IUsersService, UsersService>();
                    // .AddPolicyHandler(GetRetryPolicy())
                     //.AddPolicyHandler(GetCircuitBreakerPolicy()); ;
             }
