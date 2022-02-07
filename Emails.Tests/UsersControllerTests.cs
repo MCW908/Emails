@@ -1,17 +1,17 @@
-using System;
-using Xunit;
 using Emails.Controllers;
 using Emails.Services;
-using Moq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Moq;
+using System;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace Emails.Tests
 {
-    public class UsersControllerTest
+    public class UsersControllerTests
     {
-        private UsersDTO[] GetTestUsers() => new UsersDTO[] {
+        private UsersDTO[] GetTestReviews() => new UsersDTO[] {
             new UsersDTO{ Id = 1, UName = "Tester123", Email = "t123@gmail.com ", Password = "password1234"},
             new UsersDTO{ Id = 2, UName = "MCaldwell00", Email = "mdcaldwell16@gmail.com", Password = "testpass"},
             new UsersDTO{ Id = 3, UName = "Joe_Bloggs", Email = "JBL@gmail.com", Password = "abcdef"},
