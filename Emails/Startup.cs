@@ -51,7 +51,7 @@ namespace Emails
         {
             services.AddDbContext<EmailContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmailConnection")));
 
-            if(Env.IsDevelopment())
+            if(!Env.IsDevelopment())
             {
                 services.AddTransient<IUsersService, FakeUsersService>();
             }
