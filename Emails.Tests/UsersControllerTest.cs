@@ -26,7 +26,7 @@ namespace Emails.Tests
             var mockReviews = new Mock<IUsersService>();
             var controller = new UsersController(mockLogger.Object,
                                                    mockReviews.Object);
-            controller.ModelState.AddModelError("Something", "Something");
+            controller.ModelState.AddModelError("Test", "Test");
 
             // Act
             var result = await controller.Index(null);
