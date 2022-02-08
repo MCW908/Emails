@@ -16,6 +16,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Polly;
 using Polly.Extensions.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Emails
 {
@@ -67,6 +68,15 @@ namespace Emails
             }
             services.AddControllers();
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = "https://dev-mp2kr6gn.eu.auth0.com/";
+                options.Audience = "http://thamco-emails-api.azurewebsites.net";
+            });
 
         }
 
@@ -87,6 +97,8 @@ namespace Emails
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

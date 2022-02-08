@@ -1,4 +1,5 @@
 ﻿using Emails.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -24,6 +25,7 @@ namespace Emails.Controllers
 
         // GET: Users
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Index([FromQuery] string email)
         {
             if (!ModelState.IsValid)
@@ -47,6 +49,7 @@ namespace Emails.Controllers
 
         // GET: Users/4
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

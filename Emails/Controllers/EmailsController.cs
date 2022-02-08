@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Emails.Models;
 using Emails.Models.NewFolder;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Emails.Controllers
 {
@@ -23,6 +24,7 @@ namespace Emails.Controllers
 
         // GET: api/Emails
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Email>>> GetEmails()
         {
             return await _context.Emails.ToListAsync();
@@ -30,6 +32,7 @@ namespace Emails.Controllers
 
         // GET: api/Emails/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Email>> GetEmail(int id)
         {
             var email = await _context.Emails.FindAsync(id);
@@ -46,6 +49,7 @@ namespace Emails.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutEmail(int id, Email email)
         {
             if (id != email.EmailId)
@@ -78,6 +82,7 @@ namespace Emails.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Email>> PostEmail(Email email)
         {
             _context.Emails.Add(email);
@@ -88,6 +93,7 @@ namespace Emails.Controllers
 
         // DELETE: api/Emails/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<Email>> DeleteEmail(int id)
         {
             var email = await _context.Emails.FindAsync(id);
