@@ -110,7 +110,7 @@ namespace Emails.Tests
         //                );
         //}
 
-        [Fact]
+        //[Fact]
         //public async Task GetUserAsync_OnHttpBad_ShouldThrow()
         //{
         //    // Arrange
