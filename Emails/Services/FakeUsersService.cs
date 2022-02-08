@@ -12,7 +12,7 @@ namespace Emails.Services
             // Insert Seed Data for the fake
             new UsersDTO{ Id = 1, UName = "Tester123", Email = "t123@gmail.com ", Password = "password1234"},
             new UsersDTO{ Id = 2, UName = "MCaldwell00", Email = "mdcaldwell16@gmail.com", Password = "testpass"},
-            new UsersDTO{ Id = 3, UName = "Joe_Bloggs", Email = "JBL@gmail.com", Password = "abcdef"},
+            new UsersDTO{ Id = 3, UName = "Joe_Bloggs", Email = "JBLG@gmail.com", Password = "abcdef"},
             new UsersDTO{ Id = 4, UName = "AABB", Email = "AABB@gmail.com", Password = "AABB"}
         };
 
