@@ -111,18 +111,18 @@ namespace Emails.Tests
         //}
 
         [Fact]
-        public async Task GetUserAsync_OnHttpBad_ShouldThrow()
-        {
-            // Arrange
-            var expectedUri = new Uri("http://example.com/api/Users/1");
-            var mock = CreateHttpMock(HttpStatusCode.ServiceUnavailable, null);
-            var client = new HttpClient(mock.Object);
-            var service = CreateUsersService(client);
+        //public async Task GetUserAsync_OnHttpBad_ShouldThrow()
+        //{
+        //    // Arrange
+        //    var expectedUri = new Uri("http://example.com/api/Users/1");
+        //    var mock = CreateHttpMock(HttpStatusCode.ServiceUnavailable, null);
+        //    var client = new HttpClient(mock.Object);
+        //    var service = CreateUsersService(client);
 
-            // Act & Assert
-            await Assert.ThrowsAsync<HttpRequestException>(
-                () => service.GetUserAsync(1));
-        }
+        //    // Act & Assert
+        //    await Assert.ThrowsAsync<HttpRequestException>(
+        //        () => service.GetUserAsync(1));
+        //}
 
         [Fact]
         public async Task GetUsersAsync_WithNull_ShouldReturnAll()
