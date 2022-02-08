@@ -17,6 +17,7 @@ namespace Emails.Services
 
         public UsersService(HttpClient client, IConfiguration config)
         {
+
             string baseUrl = config["BaseUrls:UsersService"];
             client.BaseAddress = new Uri(baseUrl);
             client.Timeout = TimeSpan.FromSeconds(5);
@@ -57,6 +58,24 @@ namespace Emails.Services
 
         public async Task<IEnumerable<UsersDTO>> GetUsersAsync(string email) 
         {
+
+            var auth0AuthenticationClient = new AuthenticationApiClient(
+                new Uri($"https://dev-mp2kr6gn.eu.auth0.com"));
+            var tokenRequest = new ClientCredentialsTokenRequest()
+            {
+                ClientId = _config["Auth:ClientId"],
+                ClientSecret = _config["Auth:ClientSecret"],
+                Audience = _config["Services:Values:AuthAudience"]
+            };
+            var tokenResponse =
+                await auth0AuthenticationClient.GetTokenAsync(tokenRequest);
+
+            var baseAddress = _config["Services:Values:BaseAddress"];
+            _client.BaseAddress = new Uri(baseAddress);
+
+            _client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
             string uri = "api/Users";
             if(email != null)
             {

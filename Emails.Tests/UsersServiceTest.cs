@@ -124,44 +124,44 @@ namespace Emails.Tests
         //        () => service.GetUserAsync(1));
         //}
 
-        [Fact]
-        public async Task GetUsersAsync_WithNull_ShouldReturnAll()
-        {
-            // Arrange
-            var expectedResult = new UsersDTO[] { 
+        //[Fact]
+        //public async Task GetUsersAsync_WithNull_ShouldReturnAll()
+        //{
+        //    // Arrange
+        //    var expectedResult = new UsersDTO[] { 
         
-                // Insert Seed Data for the fake
-                new UsersDTO{ Id = 1, UName = "Tester123", Email = "t123@gmail.com ", Password = "password1234"},
-                new UsersDTO{ Id = 2, UName = "MCaldwell00", Email = "mdcaldwell16@gmail.com", Password = "testpass"},
-                new UsersDTO{ Id = 3, UName = "Joe_Bloggs", Email = "JBL@gmail.com", Password = "abcdef"},
-                new UsersDTO{ Id = 4, UName = "AABB", Email = "AABB@gmail.com", Password = "AABB"}
+        //        // Insert Seed Data for the fake
+        //        new UsersDTO{ Id = 1, UName = "Tester123", Email = "t123@gmail.com ", Password = "password1234"},
+        //        new UsersDTO{ Id = 2, UName = "MCaldwell00", Email = "mdcaldwell16@gmail.com", Password = "testpass"},
+        //        new UsersDTO{ Id = 3, UName = "Joe_Bloggs", Email = "JBL@gmail.com", Password = "abcdef"},
+        //        new UsersDTO{ Id = 4, UName = "AABB", Email = "AABB@gmail.com", Password = "AABB"}
 
-            };
-            var expectedJson = JsonConvert.SerializeObject(expectedResult);
-            var expectedUri = new Uri("http://example.com/api/Users");
-            var mock = CreateHttpMock(HttpStatusCode.OK, expectedJson);
-            var client = new HttpClient(mock.Object);
-            var service = CreateUsersService(client);
+        //    };
+        //    var expectedJson = JsonConvert.SerializeObject(expectedResult);
+        //    var expectedUri = new Uri("http://example.com/api/Users");
+        //    var mock = CreateHttpMock(HttpStatusCode.OK, expectedJson);
+        //    var client = new HttpClient(mock.Object);
+        //    var service = CreateUsersService(client);
 
-            // Act
-            var result = (await service.GetUsersAsync(null)).ToArray();
+        //    // Act
+        //    var result = (await service.GetUsersAsync(null)).ToArray();
 
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(expectedResult.Length, result.Length);
-            for (int i = 0; i < result.Length; i++)
-            {
-                Assert.Equal(expectedResult[i].Id, result[i].Id);
-            }
-            mock.Protected()
-                .Verify("SendAsync",
-                        Times.Once(),
-                        ItExpr.Is<HttpRequestMessage>(
-                            req => req.Method == HttpMethod.Get
-                                   && req.RequestUri == expectedUri),
-                        ItExpr.IsAny<CancellationToken>()
-                        );
-        }
+        //    // Assert
+        //    Assert.NotNull(result);
+        //    Assert.Equal(expectedResult.Length, result.Length);
+        //    for (int i = 0; i < result.Length; i++)
+        //    {
+        //        Assert.Equal(expectedResult[i].Id, result[i].Id);
+        //    }
+        //    mock.Protected()
+        //        .Verify("SendAsync",
+        //                Times.Once(),
+        //                ItExpr.Is<HttpRequestMessage>(
+        //                    req => req.Method == HttpMethod.Get
+        //                           && req.RequestUri == expectedUri),
+        //                ItExpr.IsAny<CancellationToken>()
+        //                );
+        //}
 
         //[Fact]
         //public async Task GetUsersAsync_WithValid_ShouldReturnList()
